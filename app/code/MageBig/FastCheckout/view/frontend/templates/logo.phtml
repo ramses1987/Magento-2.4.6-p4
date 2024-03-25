@@ -1,0 +1,32 @@
+<?php
+/**
+ * Copyright © www.magebig.com - All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+
+/**
+ * @var \Magento\Theme\Block\Html\Header\Logo $block
+ * @var \Magento\Theme\ViewModel\Block\Html\Header\LogoSizeResolverInterface|null $logoSizeResolver
+ */
+
+$storeName = $block->getThemeName() ? $block->getThemeName() : $block->getLogoAlt();
+$logoSizeResolver = $block->getLogoSizeResolver();
+$logoWidth = $logoSizeResolver !== null && $logoSizeResolver->getWidth()
+    ? $logoSizeResolver->getWidth()
+    : $block->getLogoWidth();
+$logoHeight = $logoSizeResolver !== null && $logoSizeResolver->getHeight()
+    ? $logoSizeResolver->getHeight()
+    : $block->getLogoHeight();
+$helper = $block->getData('view_helper');
+$logo = $helper->getLogo() ?: $block->getLogoSrc();
+?>
+<h1 class="checkout-logo-top">
+    <a class="logo text-hide" href="<?= $block->escapeUrl($block->getUrl('')) ?>"
+       title="<?= $block->escapeHtmlAttr($storeName) ?>" aria-label="store logo">
+        <img src="<?= $block->escapeUrl($logo) ?>"
+             alt="<?= $block->escapeHtmlAttr($storeName) ?>"
+            <?= $logoWidth ? 'width="' . $block->escapeHtmlAttr($logoWidth) . '"' : '' ?>
+            <?= $logoHeight ? 'height="' . $block->escapeHtmlAttr($logoHeight) . '"' : '' ?>
+        />
+    </a>
+</h1>

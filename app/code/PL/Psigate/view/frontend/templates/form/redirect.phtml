@@ -1,0 +1,43 @@
+<?php
+/**
+ * PL Development.
+ *
+ * @category    PL
+ * @author      Linh Pham <plinh5@gmail.com>
+ * @copyright   Copyright (c) 2016 PL Development. (http://www.polacin.com)
+ */
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Redirecting</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+</head>
+<body>
+<center>
+<form name="psigate_htmlpost" id="psigate-htmlpost-form" method="post"
+      action="<?php echo $block->getFormUrl()?>" accept-charset="utf-8">
+
+    <?php foreach ($block->getFormFields() as $field => $value) : ?>
+        <input type="hidden" name="<?php echo($field); ?>" value="<?php echo($value); ?>" />
+    <?php endforeach;?>
+    <p><?php echo __('You will be automatically redirected after a few seconds...'); ?></p>
+</form>
+</center>
+<script type="text/javascript">
+    function postTransaction() {
+        document.psigate_htmlpost.submit();
+    }
+    if (window.addEventListener) {
+        window.addEventListener('load', postTransaction, false);
+    }else if (window.attachEvent){
+        window.attachEvent('onload', postTransaction);
+    }else {
+        window.onload = postTransaction;
+    }
+</script>
+</body>
+</html>

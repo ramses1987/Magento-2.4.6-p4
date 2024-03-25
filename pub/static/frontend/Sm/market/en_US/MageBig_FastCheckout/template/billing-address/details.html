@@ -1,0 +1,60 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div visible="(!isAddressSameAsShipping() && !isAddressDetailsVisible()) || (!isAddressSameAsShipping() && isAddressDetailsVisible() && currentBillingAddress())" class="title"><span text="$t('Billing Address')"></span></div>
+<div if="isAddressDetailsVisible() && currentBillingAddress()" class="billing-address-details">
+    <div visible="!isAddressSameAsShipping()" class="same-shipping">
+        <div class="billing-detail">
+        <if args="currentBillingAddress().prefix">
+            <span text="currentBillingAddress().prefix + ' '"></span>
+        </if>
+        <if args="currentBillingAddress().firstname">
+            <span text="currentBillingAddress().firstname + ' '"></span>
+        </if>
+        <if args="currentBillingAddress().middlename">
+            <span text="currentBillingAddress().middlename + ' '"></span>
+        </if>
+        <if args="currentBillingAddress().lastname">
+            <span text="currentBillingAddress().lastname + ' '"></span>
+        </if>
+        <if args="currentBillingAddress().suffix">
+            <span text="currentBillingAddress().suffix + ' '"></span>
+        </if>
+        <if args="currentBillingAddress().telephone">
+            <span text="currentBillingAddress().telephone + ' '"></span>
+        </if>
+        <if args="currentBillingAddress().vatId">
+            <span translate="'VAT'"></span>: <span text="currentBillingAddress().vatId"></span>
+        </if>
+        <br>
+        <if args="currentBillingAddress().street">
+            <span text="_.values(_.compact(currentBillingAddress().street)).join(', ') + ', '"></span>
+        </if>
+        <if args="currentBillingAddress().city">
+            <span text="currentBillingAddress().city + ', '"></span>
+        </if>
+        <if args="currentBillingAddress().region">
+            <span text="currentBillingAddress().region + ', '"></span>
+        </if>
+        <if args="currentBillingAddress().postcode">
+            <span text="currentBillingAddress().postcode + ', '"></span>
+        </if>
+        <if args="currentBillingAddress().countryId">
+            <span text="getCountryName(currentBillingAddress().countryId)"></span>
+        </if>
+        <br>
+        <each args="data: currentBillingAddress().customAttributes, as: 'element'">
+            <span text="$parent.getCustomAttributeLabel(element)"></span>
+            <br>
+        </each>
+        </div>
+        <button type="button"
+                class="action action-edit-address"
+                click="editAddress">
+            <span translate="'Edit'"></span>
+        </button>
+    </div>
+</div>

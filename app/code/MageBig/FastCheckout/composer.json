@@ -1,0 +1,17 @@
+{
+  "name": "magebig/fast-checkout",
+  "version": "2.6.0",
+  "description": "magebig fast checkout",
+  "type": "magento2-module",
+  "license": [
+    "Massachusetts Institute of Technology License (MITL)"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "MageBig\\FastCheckout\\": ""
+    }
+  }
+}

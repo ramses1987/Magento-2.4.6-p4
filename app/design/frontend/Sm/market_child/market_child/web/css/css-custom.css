@@ -1,0 +1,16 @@
+/**
+ * Custom CSS
+ */
+
+ .block-static-block.widget{
+    margin-bottom:0!important;
+ }
+ .block-categories .cat-wrap{
+    justify-content: center!important;
+ }
+ .header-c{
+       width: calc(100% - 700px)!important; 
+ }    
+ .header-r {
+     width: 400px!important;
+ }   

@@ -1,0 +1,188 @@
+Xtento_GridActions
+
+-------------
+  CHANGELOG
+-------------
+
+===== 2.0.0 =====
+ * Initial stable M2 release
+
+===== 2.0.1 =====
+ * Established compatibility with Magento 2.0.2, shipment creation logic was fixed
+ * Updated Xtento_XtCore
+
+===== 2.0.2 =====
+ * Updated Xtento_XtCore to 2.0.3
+
+===== 2.0.3 =====
+ * Fixed bug (Registry key "current_shipment" already exists) that could happen when creating multiple shipments at the same time
+
+===== 2.0.4 =====
+ * Fixed shipment creation logic that sometimes lead to the shipment being created, but the order itself not reflecting "Qty Shipped"
+ * Fixed carrier input on Sales > Orders grid which opened order upon trying to enter a tracking number on the grid
+
+===== 2.0.5 =====
+ * Compatibility with Magento 2.1.0 established
+
+===== 2.0.6 =====
+ * Updated composer.json to require XTENTO "XtCore" base module
+
+===== 2.0.7 =====
+ * Fixed "Set order status to X after invoicing/completing/shipping" function, which threw error "Please make sure you set a valid custom order status..." before
+
+===== 2.0.8 =====
+ + Added support for Fooman PDFCustomizer invoice/packingslip PDFs
+ * Refactored PDF controllers to use abstract Magento core PDF controllers
+
+===== 2.0.9 =====
+ * Fixed mass actions; if a filter was used on a grid (and also sometimes in combination with "select all") then eventually all orders/none were exported
+
+===== 2.1.0 =====
+ * Fixed "print invoice" mass action functionality that returned wrong invoices in some cases
+
+===== 2.1.1 =====
+ * Updated Xtento_XtCore to version 2.0.7 ("Added warning in module configuration at System > Configuration if module output is disabled via "Disable Module Output" at System > Configuration > Advanced > Advanced")
+
+===== 2.1.2 =====
+ * Fixed issue for Magento version >=2.1.3 where PDF invoices couldn't be printed
+ * Updated Xtento_XtCore to version 2.0.8
+
+===== 2.1.3 =====
+ + Compatibility with Magento 2.2 established
+
+===== 2.1.4 =====
+ * Updated Xtento_XtCore to version 2.1
+
+===== 2.1.5 =====
+ * Fixed: Running a status (or "complete") action on an order did not add an entry to the order status history.
+
+===== 2.1.6 =====
+ * Established compatibility with Magento 2.2.2: Fixed "We cannot create an empty shipment" error
+
+===== 2.1.7 =====
+ * Updated Xtento_XtCore to version 2.2.0
+
+===== 2.1.8 =====
+ * Updated Xtento_XtCore to version 2.3.0
+ * Confirmed compatibility with Magento CE 2.2.5 / EE 2.2.5
+
+===== 2.1.9 =====
+ + Added ability to delete ANY order -- associated invoices, shipments, credit memos will be deleted as well
+
+===== 2.2.0 =====
+ + Established compatibility with Magento 2.3.0
+
+===== 2.2.1 =====
+ * Improved compatibility with Magento 2.3 Multi-Source Inventory feature
+
+===== 2.2.2 =====
+ + For shipment imports: MSI source is now automatically retrieved from source selection logic in MSI module, if possible. If there are multiple possible sources, you must still specify the source code in the file mapping.
+
+===== 2.2.3 =====
+ * Improvement for MSI compatibility with regards to source selection
+
+===== 2.2.4 =====
+ * Updated Xtento_XtCore to version 2.5.0
+
+===== 2.2.5 =====
+ * Improved check if Magento MSI (Multi-Source inventory) is installed/enabled. Could lead to errors otherwise.
+
+===== 2.2.6 =====
+ * Fixed error "Notice: Undefined index: actions"
+
+===== 2.2.7 =====
+ * Fixed MSI related error "Source item not found by source code: default ..."
+
+===== 2.2.8 =====
+ + Added system configuration option to make all actions ran from grid to be "confirmed" by an "are you sure?" dialog. Can be enabled if required.
+
+===== 2.2.9 =====
+ * Module code updated to comply with Magento Coding Standard as of August 2019
+ * Removed silenced errors ("@function") entirely. Improved logging in such cases so those errors are logged/reported.
+ * Logging improvements
+
+===== 2.3.0 =====
+ * Resend invoice/shipment email now correctly resends all invoices/shipments associated to that order, not just the first one
+
+===== 2.3.1 =====
+ * Updated Xtento_XtCore to version 2.7.0
+
+===== 2.3.2 =====
+ * Established compatibility with Magento 2.2.10 / 2.3.3
+ * Established compatibility with PHP 7.3
+ * Changed sort order of mass actions, placed at end of list now
+ * Updated Xtento_XtCore to version 2.8.0
+
+===== 2.3.3 =====
+ * Grid action callback is now based on the Magento native callback, avoiding issues. This should fix the issue of "Select All" in the grid not doing updates on "all" orders selected using our extension.
+
+===== 2.3.4 =====
+ * Updated Xtento_XtCore to version 2.9.0
+
+===== 2.3.5 =====
+ * Fixed an issue with "invoice" functionality, where the re-send invoice action didn't work
+
+===== 2.3.6 =====
+ + Improved status change process when changing status to "Complete"
+
+===== 2.3.7 =====
+ * Established compatibility with Magento 2.4.0 and 2.3.5-p2
+ * Established compatibility with PHP 7.4, dropped support for PHP 5.x
+ * Updated Xtento_XtCore to version 2.10.0
+
+===== 2.3.8 =====
+ * Improved exception handling for the sales orders grid - if a faulty order that fails during loading or canShip is encountered, the grid doesn't break anymore
+
+===== 2.3.9 =====
+ + Added support for XTENTO PDF Customizer: If installed, PDFs printed after running bulk actions will be generated by XTENTO PDF Customizer instead.
+ * Fixed status history always saying "customer not notified".
+ * Fixed an issue where extension related images/JS cannot be loaded in the Magento backend
+ * Updated Xtento_XtCore to version 2.11.0 ("Added Content Security Policy (CSP) support. XTENTO resources are whitelisted.")
+
+===== 2.4.0 =====
+ * Fixed an issue when changing the order status: If the status one tries to set is assigned to multiple order states, the state of the current order will be selected if possible (instead of another state eventually)
+
+===== 2.4.1 =====
+ * Fixed an issue where MSI source was getting lost if adding tracking#/re-sending shipment email of existing order
+
+===== 2.4.2 =====
+ * Updated Xtento_XtCore to version 2.12.0 ("Removed phpinfo from debug information section due to possibly sensitive information being disclosed")
+
+===== 2.4.3 =====
+ * Confirmed compatibility with Magento 2.3.7-p1 / 2.4.2-p2 / 2.4.3
+
+===== 2.4.4 =====
+ * Established compatibility with Magento 2.3.7-p3 / 2.4.3-p2 / 2.4.4
+ * Established compatibility with PHP 8.1
+ * Updated Xtento_XtCore to version 2.13.0 ("PHP 8.1 compatibility")
+
+===== 2.4.5 =====
+ * Updated Xtento_XtCore to version 2.14.0 ("Further PHP 8.1 fixes")
+
+===== 2.4.6 =====
+ * Updated Xtento_XtCore to version 2.16.0
+ * Dropped support for Magento 2.2.x. Earliest supported version is 2.3.x now.
+
+===== 2.4.7 =====
+ * Established compatibility with Magento 2.4.5, 2.4.4-p1, 2.4.3-p3, 2.3.7-p4
+ * Updated Xtento_XtCore to version 2.17.0 ("Fixed error "Area code not set" during installation/upgrade")
+
+===== 2.4.8 =====
+ * Further PHP 8.1 fixes
+
+===== 2.4.9 =====
+ * Further PHP 8.1 fixes
+
+===== 2.5.0 =====
+ * Established compatibility with Magento 2.4.6 / 2.4.5-p2 / 2.4.4-p3
+ * Established compatibility with PHP 8.2
+ * Updated Xtento_XtCore to version 2.18.0 ("Magento 2.4.6 and PHP 8.2 compatibility")
+
+===== 2.5.1 =====
+ * Updated Fooman PDF customizer invoices/shipments sample PHP code in GridActions/Controller/Adminhtml/Pdf. Just sample code, as they can change it at any time.
+
+===== 2.5.2 =====
+ * Updated Xtento_XtCore to version 2.19.0 ("Fixed an issue with Zend compatibility in Magento 2.4.6")
+
+===== 2.5.3 =====
+ * Orders are loaded using repository now to improve 3rd party compatibility, as extn attributes are loaded now

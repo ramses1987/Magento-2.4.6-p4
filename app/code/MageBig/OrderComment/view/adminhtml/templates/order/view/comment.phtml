@@ -1,0 +1,19 @@
+<?php if (!empty($block->getOrder()->getMagebigOrderComment())) {
+    ?>
+    <section class="admin__page-section">
+        <div class="admin__page-section-title">
+        <span class="title"><?= /* @noEscape */ __('Order Comment') ?></span>
+        </div>
+        <div class="admin__page-section-content">
+            <div class="admin__page-section-item">
+                <div class="admin__page-section-item-content">
+                    <div class="order-payment-method-title magebig-order-comment-box" id="order-comment-label-div">
+                    <span><?= $block->escapeHtml(nl2br($block->getOrder()->getMagebigOrderComment())); ?></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <?php
+}
+?>

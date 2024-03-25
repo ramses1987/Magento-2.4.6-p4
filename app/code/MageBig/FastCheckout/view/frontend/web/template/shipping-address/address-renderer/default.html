@@ -1,0 +1,60 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div class="shipping-address-item" css="'selected-item' : isSelected() , 'not-selected-item':!isSelected()">
+    <if args="address().prefix">
+        <span text="address().prefix + ' '"></span>
+    </if>
+    <if args="address().firstname">
+        <span text="address().firstname + ' '"></span>
+    </if>
+    <if args="address().middlename">
+        <span text="address().middlename + ' '"></span>
+    </if>
+    <if args="address().lastname">
+        <span text="address().lastname + ' '"></span>
+    </if>
+    <if args="address().suffix">
+        <span text="address().suffix + ' '"></span>
+    </if>
+    <if args="address().telephone">
+        <span text="address().telephone + ' '"></span>
+    </if>
+    <if args="address().vatId">
+        <span translate="'VAT'"></span>: <span text="address().vatId"></span>
+    </if>
+    <br>
+    <if args="address().street">
+        <span text="_.values(_.compact(address().street)).join(', ') + ', '"></span>
+    </if>
+    <if args="address().city">
+        <span text="address().city + ', '"></span>
+    </if>
+    <if args="address().region">
+        <span text="address().region + ', '"></span>
+    </if>
+    <if args="address().postcode">
+        <span text="address().postcode + ', '"></span>
+    </if>
+    <if args="address().countryId">
+        <span text="getCountryName(address().countryId)"></span>
+    </if>
+    <br>
+    <each args="data: address().customAttributes, as: 'element'">
+        <span text="$parent.getCustomAttributeLabel(element)"></span>
+        <br>
+    </each>
+    <button visible="address().isEditable()" type="button"
+            class="action edit-address-link"
+            click="editAddress">
+        <span translate="'Edit'"></span>
+    </button>
+    <!-- ko if: (!isSelected()) -->
+    <button type="button" click="selectAddress" class="action action-select-shipping-item">
+        <span translate="'Ship Here'"></span>
+    </button>
+    <!-- /ko -->
+</div>

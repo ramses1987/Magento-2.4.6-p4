@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <payment>
+            <psigate_htmlmessenger>
+                <active>0</active>
+                <model>PL\Psigate\Model\HTMLMessenger</model>
+                <title>PSiGate Payment (Real-time HTML API)</title>
+                <payment_action>order</payment_action>
+                <cctypes>VI,MC</cctypes>
+                <allowspecific>0</allowspecific>
+                <debug>0</debug>
+                <testmode>1</testmode>
+            </psigate_htmlmessenger>
+            <psigate_xmlmessenger>
+                <active>0</active>
+                <model>PL\Psigate\Model\XMLMessenger</model>
+                <title>PSiGate Payment (Real-time XML API)</title>
+                <payment_action>authorize_capture</payment_action>
+                <cctypes>VI,MC</cctypes>
+                <allowspecific>0</allowspecific>
+                <debug>0</debug>
+                <testmode>1</testmode>
+                <ssl_enable>0</ssl_enable>
+                <useccv>0</useccv>
+            </psigate_xmlmessenger>
+        </payment>
+    </default>
+</config>
